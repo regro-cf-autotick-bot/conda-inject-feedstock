@@ -1,5 +1,5 @@
 {% set name = "conda-inject" %}
-{% set version = "1.0.2" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/conda_inject-{{ version }}.tar.gz
-  sha256: 9446a6bf4b5867ffa7e0f584d6cfdb161edd829bf6753c858cfef686d4c2020f
+  sha256: 4e4f4b6174963fc186cc59b6c98d26a7433c2bc615509739b02eae7580ef40b1
 
 build:
   noarch: python
