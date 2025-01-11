@@ -1,3 +1,4 @@
+{% set python_min = '3.9.0' %}
 {% set name = "conda-inject" %}
 {% set version = "1.3.2" %}
 
@@ -6,21 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/conda_inject-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/conda_inject-{{ version }}.tar.gz
   sha256: 0b8cde8c47998c118d8ff285a04977a3abcf734caf579c520fca469df1cd0aac
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.9,<4.0
+    - python {{ python_min }}
     - poetry-core
     - pip
   run:
-    - python >=3.9.0,<4.0.0
+    - python >={{ python_min }},<4.0.0
     - pyyaml >=6.0.0,<7.0.0
 
 test:
@@ -30,6 +31,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   summary: Helper functions for injecting a conda environment into the current python environment (by modifying sys.path, without actually changing the current python environment).
